@@ -1,25 +1,31 @@
-const brypt = require('bcrypt');
+require('dotenv').config();
+const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const User = require('../models/user-model')
 const sendMailService = require('../service/mail-service')
 const tokenService = require('../service/token-service')
-const userDto = require('../dto/user-dto');
+const UserDto = require('../dto/user-dto');
 
 class UserService {
     async signUp(email, password) {
-        const user = await User.findOne(email);
-        if(user) throw new Error("UService: user already exists " + email);
+        try {
+            const user = await User.findOne({email});
+            if(user) throw new Error("UService: user already exists " + email);
 
-        const hashedPassword = await brypt(password, 3);
-        const newUser = await User.create({email, hashedPassword});
-        const actLink = uuid.v4();
-        await sendMailService(newUser.email, actLink);
-        const userData = new UserDto(newUser);
+            const hashedPassword = await bcrypt.hash(password, 3);
+            const newUser = await User.create({email, password: hashedPassword});
+            const actLink = process.env.API_URL + '/actLink/' + uuid.v4();
+            await sendMailService.sendActivationLink(newUser.email, actLink);
+            const userData = new UserDto(newUser);
 
-        const tokens = tokenService({...userData})
-        await tokenService.saveTokens(userData.id, tokens.refreshToken);
+            const tokens = tokenService.createTokens({...userData})
+            await tokenService.saveTokens(userData.id, tokens.refreshToken);
 
-        return {...tokens, user: userData};
+            return {...tokens, user: userData};
+        } catch(e) {
+            throw new Error("UService error " + e);
+        }
+
     }
 }
 
