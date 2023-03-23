@@ -6,12 +6,14 @@ const sendMailService = require('../service/mail-service')
 const tokenService = require('../service/token-service')
 
 const UserDto = require('../dto/user-dto');
+const ApiError = require("../exceptions/api-error");
 
 class UserService {
+
     async signUp(email, password) {
         try {
             const user = await User.findOne({email});
-            if(user) throw new Error("UService: user already exists " + email);
+            if(user) throw ApiError.BadRequest("UService: user already exists " + email);
 
             const hashedPassword = await bcrypt.hash(password, 3);
 
@@ -28,7 +30,7 @@ class UserService {
 
             return {...tokens, user: userData};
         } catch(e) {
-            throw new Error("UService error " + e);
+            console.log(e);
         }
     }
 
@@ -36,12 +38,66 @@ class UserService {
         try {
             const user = await User.findOne({activationLink});
 
-            if(!user) throw new Error('User not found');
+            if(!user) throw ApiError.BadRequest('User not found');
             user.isActivated = true;
             await user.save();
             return user;
         } catch(e) {
-            throw new Error('MService error ' + e)
+            console.log(e);
+        }
+    }
+
+    async signIn(email, password) {
+        try {
+            const userData = await User.findOne({email});
+            if(!userData) throw ApiError.BadRequest("User not found");
+
+            const result = await bcrypt.compare(password, userData.password);
+
+            if(!result) throw ApiError.BadRequest("Invalid email or password");
+
+            const userDto = new UserDto(userData);
+            const tokens = tokenService.createTokens({...userDto})
+
+            await tokenService.saveTokens(userData.id, tokens.refreshToken);
+
+            return {...tokens, user: userData};
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
+    async signOut(token) {
+        try {
+            const data = await tokenService.removeToken(token);
+            if(!user) throw ApiError.UnauthorizedError();
+
+        } catch(e) {
+            console.log(e);
+        }
+
+    }
+
+    async refreshToken(token) {
+        try {
+
+            if(!token) throw ApiError.UnauthorizedError();
+
+            const userData = tokenService.verifyRefreshToken(token);
+            const userToken = await tokenService.findToken(token)
+
+
+            if(!userData || !userToken) throw ApiError.UnauthorizedError();
+
+            const user = await User.findById(userData.id);
+            const userDto = new UserDto(user);
+            const tokens = tokenService.createTokens({...userDto});
+
+            tokenService.saveTokens(userDto.id, tokens.refreshToken);
+
+            return tokens;
+        } catch(e) {
+            console.log(e);
         }
 
     }

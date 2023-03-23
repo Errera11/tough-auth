@@ -2,6 +2,7 @@ require('dotenv').config({path : '../.env'});
 
 const jwt = require('jsonwebtoken');
 const Token = require('../models/token-model');
+const ApiError = require('../exceptions/api-error');
 
 class TokenService {
     createTokens(payload) {
@@ -18,13 +19,36 @@ class TokenService {
     }
 
     async saveTokens(userId, refreshToken) {
-        const existingToken = await Token.findOne({userId});
+        const existingToken = await Token.findOne({user: userId});
         if (existingToken) {
             existingToken.refreshToken = refreshToken;
             return existingToken.save();
         }
         const token = await Token.create({user: userId, refreshToken: refreshToken});
         return token;
+    }
+
+    async removeToken(token) {
+        const dbToken = await Token.deleteOne({refreshToken: token});
+        return dbToken;
+    }
+
+    async findToken(refreshToken) {
+
+        const dbToken = await Token.findOne({refreshToken});
+
+        return dbToken;
+    }
+
+    verifyAccessToken(token) {
+        const userData = jwt.verify(token, process.env.SECRET_ACCESS_TOKEN);
+        return userData;
+    }
+
+    verifyRefreshToken(token) {
+
+        const userData = jwt.verify(token, process.env.SECRET_REFRESH_TOKEN);
+        return userData;
     }
 }
 
