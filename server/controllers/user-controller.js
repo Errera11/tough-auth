@@ -63,7 +63,15 @@ class UserController {
         } catch(e) {
             next(e);
         }
+    }
 
+    async getUsers(req, res, next) {
+        try {
+            const users = await userService.getUsers();
+            return res.json(users);
+        } catch(e) {
+            next(e);
+        }
     }
 }
 

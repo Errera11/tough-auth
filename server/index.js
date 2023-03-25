@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./router/appRoutes');
 const cookieParser = require('cookie-parser');
+const errorMiddleware = require('./middlewares/error-middleware');
 
 const PORT = 5000 || process.env.PORT;
 const dbUrl = process.env.db;
@@ -13,6 +14,7 @@ const app =  express();
 app.use(express.json());
 app.use(cookieParser());
 app.use('/', router);
+app.use(errorMiddleware);
 
 const start = async () => {
     try {

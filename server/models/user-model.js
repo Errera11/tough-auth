@@ -4,7 +4,7 @@ const userSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     isActivated: {type: Boolean, default: false},
-    activateLink: {type: String}
+    activationLink: {type: String}
 })
 
 module.exports = model('User', userSchema)

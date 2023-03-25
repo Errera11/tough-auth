@@ -99,9 +99,13 @@ class UserService {
         } catch(e) {
             console.log(e);
         }
-
     }
 
+    async getUsers() {
+
+        const user = await User.findOne();
+        return user;
+    }
 }
 
 module.exports = new UserService();
