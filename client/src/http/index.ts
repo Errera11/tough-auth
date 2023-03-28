@@ -1,8 +1,11 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
+dotenv.config();
+
 
 const api = axios.create({
     withCredentials: true,
-    baseURL: 'default'
+    baseURL: process.env.API_URL
 })
 
 api.interceptors.request.use(config => {
