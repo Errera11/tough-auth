@@ -2,16 +2,19 @@ import {AxiosResponse} from 'axios';
 import IAuthResponse from '../models/IAuthResponse';
 import api from '../http/index';
 
-export default class {
+export default class Auth {
     static async signIn(email: string, password: string) : Promise<AxiosResponse<IAuthResponse>>{
-        return api.post('/signIn', {email, password});
+        const response = api.post<IAuthResponse>('/signIn', {email, password});
+
+        return response;
     }
 
     static async signUp(email: string, password: string) : Promise<AxiosResponse<IAuthResponse>>{
-        return api.post('/signUp', {email, password});
+        const response = api.post<IAuthResponse>('/signUp', {email, password});
+        return response;
     }
 
     static async signOut() : Promise<void>{
-        return api.post('/signOut');
+        return await api.post('/signOut');
     }
 }
