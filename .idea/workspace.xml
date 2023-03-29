@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e639203d-5770-4fa8-ae40-638fbed8dc23" name="Changes" comment="signing workflow">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cors/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
@@ -98,7 +106,7 @@
       <workItem from="1679834094144" duration="51000" />
       <workItem from="1679834167021" duration="7630000" />
       <workItem from="1680021113599" duration="10497000" />
-      <workItem from="1680086158375" duration="17797000" />
+      <workItem from="1680086158375" duration="18130000" />
     </task>
     <task id="LOCAL-00001" summary="signing workflow">
       <created>1680032195957</created>
