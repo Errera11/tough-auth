@@ -14,7 +14,7 @@ class UserController {
             const userData = await userService.signUp(email, password);
             res.cookie("refreshToken", userData.refreshToken, {httpOnly: true});
 
-            res.send(userData)
+            res.json(userData)
         } catch (e) {
             next(e);
         }
@@ -26,17 +26,20 @@ class UserController {
             const userData = await userService.signIn(email, password);
             res.cookie("refreshToken", userData.refreshToken, {httpOnly: true});
 
-            res.send({...userData})
+            res.json({...userData})
         } catch(e) {
             next(e);
         }
     }
 
     async signOut(req, res, next) {
-        const {refreshToken} = req.cookies;
-        await userService.signOut(refreshToken)
-        req.clearCookie();
-
+        try {
+            const {refreshToken} = req.cookies;
+            await userService.signOut(refreshToken)
+            res.clearCookie('refreshToken');
+        } catch(e) {
+            next(e)
+        }
     }
 
     async refreshToken(req, res, next) {

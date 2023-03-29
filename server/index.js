@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./router/appRoutes');
@@ -13,6 +14,7 @@ const app =  express();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({credentials: true, origin: process.env.CLIENT_URL}));
 app.use('/', router);
 app.use(errorMiddleware);
 

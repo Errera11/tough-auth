@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -20%);
+    width: 40%;
+    margin: 40px;
+}
+
+.container h3 {
+    margin: 51px;
+}
+
+.container input {
+    margin: 5px;
+    padding: 15px;
+}

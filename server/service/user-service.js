@@ -70,8 +70,7 @@ class UserService {
     async signOut(token) {
         try {
             const data = await tokenService.removeToken(token);
-            if(!user) throw ApiError.UnauthorizedError();
-
+            if(!data) throw ApiError.UnauthorizedError();
         } catch(e) {
             console.log(e);
         }
@@ -102,7 +101,6 @@ class UserService {
     }
 
     async getUsers() {
-
         const user = await User.findOne();
         return user;
     }

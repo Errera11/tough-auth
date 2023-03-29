@@ -1,19 +1,4 @@
 .formContainer {
     display: flex;
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, -20%);
     flex-direction: column;
-    width: 60%;
-    margin: 40px;
-}
-
-h3 {
-    margin: 5px;
-}
-
-input {
-    margin: 5px;
-    padding: 15px;
 }
