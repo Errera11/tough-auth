@@ -7,7 +7,7 @@ export default class Store {
 
     user = {} as IUser;
     isAuth: boolean = false;
-    isLoading: boolean = true
+    isLoading: boolean = true;;
     constructor() {
         makeAutoObservable(this);
     }
@@ -26,6 +26,8 @@ export default class Store {
             localStorage.setItem('token', 'Bearer ' + response.data.accToken);
             this.setUser(response.data.user);
             this.setAuth(true);
+
+
         }
         catch(e) {
             console.log(e);
@@ -38,6 +40,7 @@ export default class Store {
                 localStorage.setItem('token', 'Bearer ' + response.data.accToken);
                 this.setUser(response.data.user);
                 this.setAuth(true);
+
             }
             catch(e) {
                 console.log(e);
@@ -51,22 +54,23 @@ export default class Store {
         await authService.signOut();
     }
 
+    setLoading(value: boolean) {
+            this.isLoading = value;
+        }
 
     async checkAuth() {
         this.setLoading(true);
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/refreshToken`, {withCredentials: true});
-            localStorage.setItem('token', 'Bearer ' + response.data.accToken);
-            this.setUser(response.data.user);
             this.setAuth(true);
-        } catch(e: any) {
-            console.log(e.Message)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/refreshToken`, {withCredentials: true});
+            this.setUser(response.data.user);
+            localStorage.setItem('token', 'Bearer ' + response.data.accToken);
+        } catch(e) {
+            console.log(e)
         } finally {
              this.setLoading(false);
         }
     }
 
-    setLoading(value: boolean) {
-        this.isLoading = value;
-    }
+
 }

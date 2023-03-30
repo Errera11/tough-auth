@@ -7,9 +7,6 @@ module.exports = function(req, res, next)  {
 
         const userData = tokenService.verifyAccessToken(accToken);
 
-        console.log(accToken)
-        console.log(userData)
-
         if(!userData) next(ApiError.UnauthorizedError());
 
         req.user = userData;

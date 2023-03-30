@@ -9,7 +9,7 @@ class TokenService {
         try {
             const secretAcc = String(process.env.SECRET_ACCESS_TOKEN);
             const secretRefr = String(process.env.SECRET_REFRESH_TOKEN);
-            const accToken = jwt.sign(payload, secretAcc, {expiresIn: "30m"});
+            const accToken = jwt.sign(payload, secretAcc, {expiresIn: "5s"});
             const refreshToken = jwt.sign(payload, secretRefr, {expiresIn: "30d"});
             return {accToken, refreshToken};
         } catch(e) {

@@ -58,7 +58,6 @@ class UserService {
 
             const userDto = new UserDto(userData);
             const tokens = tokenService.createTokens({...userDto})
-
             await tokenService.saveTokens(userData.id, tokens.refreshToken);
 
             return {...tokens, user: userData};
@@ -101,7 +100,7 @@ class UserService {
     }
 
     async getUsers() {
-        const user = await User.findOne();
+        const user = await User.find();
         return user;
     }
 }
