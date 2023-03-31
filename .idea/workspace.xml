@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e639203d-5770-4fa8-ae40-638fbed8dc23" name="Changes" comment="signing workflow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/http/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/http/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/service/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/user-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/auth-middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/token-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/token-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/user-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user-controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +83,9 @@
       <workItem from="1679834167021" duration="7630000" />
       <workItem from="1680021113599" duration="10497000" />
       <workItem from="1680086158375" duration="19450000" />
-      <workItem from="1680192597617" duration="7002000" />
+      <workItem from="1680192597617" duration="7457000" />
+      <workItem from="1680260830068" duration="1521000" />
+      <workItem from="1680279927574" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="signing workflow">
       <created>1680032195957</created>
@@ -117,7 +114,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="server" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>

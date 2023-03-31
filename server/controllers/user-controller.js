@@ -61,7 +61,7 @@ class UserController {
             const link = req.params.link;
 
             const user = await userService.activateAccount(link);
-            res.redirect('http://' + process.env.CLIENT_URL);
+            res.redirect(process.env.CLIENT_URL);
 
         } catch(e) {
             next(e);
