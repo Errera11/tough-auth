@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e639203d-5770-4fa8-ae40-638fbed8dc23" name="Changes" comment="signing workflow">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/http/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/http/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user-controller.js" afterDir="false" />
-    </list>
+    <list default="true" id="e639203d-5770-4fa8-ae40-638fbed8dc23" name="Changes" comment="signing workflow" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +81,7 @@
       <workItem from="1680086158375" duration="19450000" />
       <workItem from="1680192597617" duration="7457000" />
       <workItem from="1680260830068" duration="1521000" />
-      <workItem from="1680279927574" duration="1226000" />
+      <workItem from="1680279927574" duration="1570000" />
     </task>
     <task id="LOCAL-00001" summary="signing workflow">
       <created>1680032195957</created>
